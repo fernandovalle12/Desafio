@@ -1,0 +1,124 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Senior</title>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Desafio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="insert.html">Formulário</a>
+              </li>
+            </ul>
+        
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search ">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+          </form>
+        </div>
+      </nav>
+<script type="text/javascript">
+      function Adicionar(){
+        var produto = JSON.stringify({
+            Nome   : $("#name").val(),
+            Quantidade     : $("#quantidade").val(),
+            Preço : $("#valor").val(),
+            Perecível    : $("#produto_p").val(),
+            Validade    : $("#validade").val(),
+            Fabricação    : $("#fabricacao").val()
+        });
+        tbProduto.push(produto);
+        localStorage.setItem("tbProduto", JSON.stringify(tbProduto));
+        alert("Registro adicionado.");
+        return true;
+    }
+
+</script>
+
+
+</head>
+<body class="container">
+    <br><br>
+    <h1 class="text-center">Página de Inserção</h1>
+
+    <br><br>
+    
+    <div id="mensagemView"></div>
+    
+    <form class="form" onsubmit="Adicionar()" >     
+        <div class="form-inline">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+            <label for="name">Nome do item (apenas letras):</label></div>
+            <input type="text" id="name" maxlength="50" size="50" class="form-control" required  />        
+        </div>
+        
+       <br> 
+
+        <div class="form-inline">
+            <div class="btn-group mr-2" role="group">
+            <label for="quantidade">Quantidade:</label>
+          </div>
+          <input type="number" min="1" id="quantidade" class="form-control" value="1" pattern="[0-9]+$"/>
+          <div class="btn-group mr-2" role="group"></div>
+          <select class="form-control form-control-sm">
+              <option value="unidade">Unidade</option>
+              <option value="kilo">Quilograma</option>
+              <option value="litro">Litro</option>
+            </select>
+          </div>
+        </div>
+        
+        <br>
+
+        <div class="form-inline">
+            <div class="btn-group mr-2" role="group">
+            <label for="valor">Preço:</label></div>
+            <span class="input-group-text">R$</span>
+            <input id="valor" type="number" class="form-control" pattern="[0-9]+$" min="0.00"  step="0.01" required maxlength="11"/>
+        </div>
+
+        <br> 
+        
+        <div class="form-inline">
+          <div class="btn-group mr-2" role="group" >
+            <div class="form-control"> 
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="produto_p" required />
+                <label class="form-check-label" for="">Produto perecível</label></div>        
+            </div></div></div>
+            
+            <br>
+
+            <div class="form-inline">
+            <div class="btn-group mr-2" role="group" >
+              <div class="form-control">
+                  <label for="name">Data de validade:
+                  <input type="date" id="validade" class="form-control" /> </label>  
+              </div></div>
+
+              
+
+             <div class="form-control"> 
+             
+              <label for="name">Data de fabricação:
+              <input type="date" id="fabricacao" class="form-control" required/> </label>
+              <div class="btn-group mr-2" role="group"> </div> </div>
+             </div> 
+            </div> 
+            <br>
+            <button class="btn btn-primary" type="submit">Incluir</button>
+          </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Senior</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Desafio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="insert.html">Formulário</a>
+              </li>
+            </ul>
+        
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+
+</head>
+
+<body class="container">
+
+    <br><br>
+    <div onload="Listar()">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Nome do item</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Produto perecível</th>
+                <th>Data de validade</th>
+                <th>Data de fabricação</th>
+            </tr>
+        </thead>
+
+    </table>
+</div>
+<script type="text/javascript">
+
+    var produto = JSON.stringify({
+        Nome   : $("#name").val(),
+        Quantidade     : $("#quantidade").val(),
+        Preço : $("#valor").val(),
+        Perecível    : $("#produto_p").val(),
+        Validade    : $("#validade").val(),
+        Fabricação    : $("#fabricacao").val()
+        });
+
+    function Listar(){
+    $("#tblListar").html("");
+    $("#tblListar").html(
+        "<thead>"+
+        "   <tr>"+
+        "   <th></th>"+
+        "   <th>Nome</th>"+
+        "   <th>Quantidade</th>"+
+        "   <th>Preço</th>"+
+        "   <th>Produto Perecível</th>"+
+        "   <th>Data de Validade</th>"+
+        "   <th>Data de Fabricação</th>"+
+        "   </tr>"+
+        "</thead>"+
+        "<tbody>"+
+        "</tbody>"
+        );
+    for(var i in tbProduto){
+        var cli = JSON.parse(tbProduto[i]);
+        $("#tblListar tbody").append("<tr>");
+        $("#tblListar tbody").append("<td>"+cli.Nome+"</td>");
+        $("#tblListar tbody").append("<td>"+cli.Quantidade+"</td>");
+        $("#tblListar tbody").append("<td>"+cli.Preco+"</td>");
+        $("#tblListar tbody").append("<td>"+cli.Perecivel+"</td>");
+        $("#tblListar tbody").append("<td>"+cli.Validade+"</td>");
+        $("#tblListar tbody").append("<td>"+cli.Fabricação+"</td>");
+        $("#tblListar tbody").append("</tr>");
+    }
+}
+</script>
+</body>
+</html>
